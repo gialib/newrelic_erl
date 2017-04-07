@@ -1,4 +1,4 @@
--module(newrelic_app).
+-module(newrelic_erl_app).
 
 -behaviour(application).
 
@@ -16,7 +16,7 @@ start(_StartType, _StartArgs) ->
     application:start(ssl),
     application:start(lhttpc),
 
-    newrelic_sup:start_link().
+    newrelic_erl_sup:start_link().
 
 stop(_State) ->
     ok.

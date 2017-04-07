@@ -1,5 +1,4 @@
-
--module(newrelic_sup).
+-module(newrelic_erl_sup).
 
 -behaviour(supervisor).
 

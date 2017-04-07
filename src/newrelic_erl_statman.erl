@@ -1,4 +1,4 @@
--module(newrelic_statman).
+-module(newrelic_erl_statman).
 -compile([export_all]).
 
 poll() ->

@@ -1,4 +1,4 @@
--module(newrelic).
+-module(newrelic_erl).
 
 -export([push/3, push_metric_data/3, push_error_data/3,
          connect/2, get_redirect_host/0]).
@@ -121,12 +121,12 @@ now_to_seconds() ->
 
 
 app_name() ->
-    {ok, Name} = application:get_env(newrelic, application_name),
+    {ok, Name} = application:get_env(newrelic_erl, application_name),
     list_to_binary(Name).
 
 
 license_key() ->
-    {ok, Key} = application:get_env(newrelic, license_key),
+    {ok, Key} = application:get_env(newrelic_erl, license_key),
     Key.
 
 

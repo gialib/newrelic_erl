@@ -1,4 +1,4 @@
--module(newrelic_poller).
+-module(newrelic_erl_poller).
 -behaviour(gen_server).
 
 %% API
@@ -47,7 +47,7 @@ handle_info(poll, State) ->
             (State#state.error_cb)(poll_failed, Error),
             ok;
         {Metrics, Errors} ->
-            case catch newrelic:push(Hostname, Metrics, Errors) of
+            case catch newrelic_erl:push(Hostname, Metrics, Errors) of
                 ok ->
                     ok;
                 Error ->
@@ -72,6 +72,6 @@ code_change(_OldVsn, State, _Extra) ->
 %%
 
 default_error_cb(poll_failed, Error) ->
-    error_logger:warning_msg("newrelic_poller: polling failed: ~p~n", [Error]);
+    error_logger:warning_msg("newrelic_erl_poller: polling failed: ~p~n", [Error]);
 default_error_cb(push_failed, Error) ->
-    error_logger:warning_msg("newrelic_poller: push failed: ~p~n", [Error]).
+    error_logger:warning_msg("newrelic_erl_poller: push failed: ~p~n", [Error]).
